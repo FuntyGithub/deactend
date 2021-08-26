@@ -37,14 +37,22 @@ public class endCommand implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "----------[End deactivation]----------");
             }
             if(arg.equals("on")){
-                Main.getPlugin().getConfig().set("end", "allow");
-                Main.getPlugin().saveConfig();
-                sender.sendMessage(ChatColor.GREEN + "[End deactivation] End is now activated!");
+                if(sender.hasPermission("deactend.reload")){
+                    Main.getPlugin().getConfig().set("end", "allow");
+                    Main.getPlugin().saveConfig();
+                    sender.sendMessage(ChatColor.GREEN + "[End deactivation] End is now activated!");
+                }else {
+                    sender.sendMessage(ChatColor.RED + "[End deactivation] No Permmissions!");
+                }
             }
             if(arg.equals("off")){
-                Main.getPlugin().getConfig().set("end", "disallow");
-                Main.getPlugin().saveConfig();
-                sender.sendMessage(ChatColor.RED + "[End deactivation] End is now deactivated!");
+                if(sender.hasPermission("deactend.reload")){
+                    Main.getPlugin().getConfig().set("end", "disallow");
+                    Main.getPlugin().saveConfig();
+                    sender.sendMessage(ChatColor.RED + "[End deactivation] End is now deactivated!");
+                }else {
+                    sender.sendMessage(ChatColor.RED + "[End deactivation] No Permmissions!");
+                }
             }
         }
         return false;
