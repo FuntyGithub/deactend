@@ -1,0 +1,9 @@
+name: DeactEnd
+version: ${project.version}
+main: org.funty.deactend.Main
+api-version: 1.17
+authors: [Funty]
+commands:
+  end:
+    aliases:
+      - deactend
